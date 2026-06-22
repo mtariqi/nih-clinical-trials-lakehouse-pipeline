@@ -52,20 +52,6 @@ flowchart TD
     P -.->|orchestrates| M
 ```
 
-### Architecture Diagram
-![Architecture](docs/images/architecture.png)
-
-### Airflow DAGs
-![Airflow DAGs](docs/images/airflow_dags.png)
-
-### dbt Lineage Graph
-![dbt Lineage](docs/images/dbt_lineage.png)
-
-### BI Dashboard Output
-![BI Dashboard](docs/images/bi_dashboard.png)
-
----
-
 ## Business Problem
 
 Clinical trial data is one of the most valuable and complex datasets in healthcare — yet it's notoriously difficult to work with at scale. Sponsors, regulators, and researchers need reliable answers to questions like:
