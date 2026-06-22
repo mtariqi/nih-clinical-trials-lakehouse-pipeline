@@ -1,0 +1,62 @@
+{
+  "expectation_suite_name": "bronze_suite",
+  "data_asset_type": null,
+  "expectations": [
+    {
+      "expectation_type": "expect_table_row_count_to_be_between",
+      "kwargs": { "min_value": 1, "max_value": 1000000 },
+      "meta": { "notes": "Bronze table must not be empty and not exceed reasonable bounds" }
+    },
+    {
+      "expectation_type": "expect_column_to_exist",
+      "kwargs": { "column": "nct_id" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "nct_id", "mostly": 1.0 }
+    },
+    {
+      "expectation_type": "expect_column_values_to_match_regex",
+      "kwargs": {
+        "column": "nct_id",
+        "regex": "^NCT\\d{8}$",
+        "mostly": 0.99
+      },
+      "meta": { "notes": "NCT IDs must match the standard format NCT followed by 8 digits" }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "overall_status", "mostly": 0.99 }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_in_set",
+      "kwargs": {
+        "column": "overall_status",
+        "value_set": [
+          "Recruiting", "Completed", "Terminated", "Withdrawn",
+          "Active, not recruiting", "Not yet recruiting",
+          "Enrolling by invitation", "Suspended", "Unknown status"
+        ],
+        "mostly": 0.95
+      }
+    },
+    {
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": { "column": "ingest_date", "mostly": 1.0 }
+    },
+    {
+      "expectation_type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "enrollment_count",
+        "min_value": 0,
+        "max_value": 1000000,
+        "mostly": 0.99
+      }
+    }
+  ],
+  "meta": {
+    "great_expectations_version": "0.18.0",
+    "created_by": "tariqul",
+    "layer": "bronze"
+  }
+}

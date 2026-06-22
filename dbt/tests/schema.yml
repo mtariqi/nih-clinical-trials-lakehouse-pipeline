@@ -1,0 +1,76 @@
+version: 2
+
+sources:
+  - name: nih_raw
+    database: nih_trials
+    schema: raw
+    tables:
+      - name: trials_raw
+        description: Raw clinical trial records ingested from ClinicalTrials.gov API
+        columns:
+          - name: nct_id
+            description: Unique ClinicalTrials.gov identifier
+            tests:
+              - not_null
+              - unique
+          - name: overall_status
+            tests:
+              - not_null
+              - accepted_values:
+                  values:
+                    - Recruiting
+                    - Completed
+                    - Terminated
+                    - Withdrawn
+                    - "Active, not recruiting"
+                    - "Not yet recruiting"
+                    - "Enrolling by invitation"
+                    - Suspended
+                    - "Unknown status"
+
+models:
+  - name: stg_trials
+    description: Standardised and deduplicated clinical trial records
+    columns:
+      - name: nct_id
+        tests: [not_null, unique]
+      - name: overall_status
+        tests: [not_null]
+      - name: phase
+        tests:
+          - accepted_values:
+              values:
+                - "phase 1"
+                - "phase 2"
+                - "phase 3"
+                - "phase 4"
+                - "phase 1/phase 2"
+                - "phase 2/phase 3"
+                - "early phase 1"
+                - "n/a"
+      - name: enrollment_count
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1000000
+
+  - name: trial_enrollment_mart
+    description: Enrollment analytics aggregated by phase, condition, sponsor, and country
+    columns:
+      - name: trial_count
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+      - name: completion_rate_pct
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 100
+
+  - name: phase_outcomes_mart
+    description: Completion and termination rates by phase and sponsor type
+
+  - name: sponsor_activity_mart
+    description: Sponsor-level trial volume, geographic reach, and success rates
