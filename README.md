@@ -391,10 +391,11 @@ Python · Apache Kafka · Apache Spark · Apache Airflow · dbt · Great Expecta
 
 ## Author
 
-**Tariqul Islam**
+**Md Tariqul Islam**
 Data Scientist · Data Engineer · Bioinformatics Researcher
 
 Specializations: Healthcare Analytics · Data Engineering · Machine Learning · Cloud Computing · Bioinformatics · MLOps
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?logo=linkedin&logoColor=white)](https://linkedin.com)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?logo=github&logoColor=white)](https://github.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-mtariqi.github.io-0A0F1E?logo=githubpages&logoColor=5DD3A5)](https://mtariqi.github.io)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?logo=linkedin&logoColor=white)](https://linkedin.com/in/mdtariqulscired)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?logo=github&logoColor=white)](https://github.com/mtariqi)
